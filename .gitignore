@@ -1,5 +1,8 @@
 __pycache__/
+
 .db/log/
+.db/data/journal/
+
 .idea/
 .venv/
 temp/
