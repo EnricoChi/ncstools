@@ -1,11 +1,11 @@
 <template>
-  <div class="row" :title="appName">
-      <div>
-        <transition name="fade" mode="out-in">
-            <router-view />
-        </transition>
-      </div>
-  </div>
+  <v-app>
+    <v-content>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
+    </v-content>
+  </v-app>
 </template>
 
 <script>

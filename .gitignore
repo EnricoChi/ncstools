@@ -1,6 +1,7 @@
 __pycache__/
 
 .db/log/
+.db/data/diagnostic.data/
 .db/data/journal/
 
 .idea/
