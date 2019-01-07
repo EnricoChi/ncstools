@@ -9,7 +9,14 @@
             </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field name="login" label="Signum" type="text"></v-text-field>
+                  <v-text-field
+                    id="login"
+                    v-model="login"
+                    :rules="loginRules"
+                    label="Signum"
+                    type="text"
+                    required autofocus
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
           </v-card>
@@ -22,18 +29,53 @@
   export default {
     data() {
       return {
-        drawer: null
+        valid: false,
+        login: '',
+        loginLength: 7,
+        loginRules: [
+          v => !!v || 'Login required.',
+          v => v.length <= this.loginLength || 'Login must be less than 7 characters'
+        ],
       }
     },
     
-    props: {
-      source: String
+    methods: {
+      
+      validateLogin: async function() {
+        const login = document.getElementById('login');
+        login.setAttribute('disabled', 'true');
+        
+        const response = await fetch( '/auth/login/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', },
+          body: JSON.stringify({'user': this.login}),
+          },
+        );
+        
+        console.log('validateLogin ->\n', await response)
+
+//        if (resp.ok) {
+//          window.localStorage.jwt = (await resp.json()).token;
+//          this.setToken(window.localStorage.jwt);
+//          this.setCurrentComponent('Upload');
+//          console.log("validateSignum->\n", window.localStorage.jwt);
+//        } else {
+//          login.removeAttribute('disabled');
+//          login.focus();
+//          console.log("validateSignum->\n", await resp);
+//        }
+      
+      },
+    },
+    
+    watch: {
+      login() {
+        if (this.login.length === this.loginLength) { this.validateLogin() }
+      }
     }
   }
 </script>
 
 <style scoped>
-  >>>input[name='login'] {
-    border-bottom: none;
-  }
+
 </style>
