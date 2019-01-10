@@ -21,6 +21,7 @@ from django.urls import path
 from rest_framework import routers
 from ncstools.views import main
 from appAPIv1.views import *
+from appAccounts.views import NCSLoginView
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -33,4 +34,5 @@ urlpatterns = [
     path('auth/registration/', include('rest_auth.registration.urls')),
     path('auth/', include('rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
+    path('my-auth/', NCSLoginView.as_view())
 ]
