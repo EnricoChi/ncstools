@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar clipped-left app height="32">
+  <v-toolbar clipped-left app height="24">
     
     <v-toolbar-side-icon>
       <v-icon color="white">fa-ellipsis-v</v-icon>
