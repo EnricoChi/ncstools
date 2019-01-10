@@ -22,6 +22,7 @@ from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from ncstools.views import main
 from appAPIv1.views import *
+from appAccounts.views import NCSLoginView
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -36,4 +37,5 @@ urlpatterns = [
     path('auth/token/refresh/', refresh_jwt_token),
     path('auth/', include('rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
+    path('my-auth/', NCSLoginView.as_view())
 ]
