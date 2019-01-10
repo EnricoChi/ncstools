@@ -1,14 +1,19 @@
 <template>
-  <app-toolbar />
+  <div>
+    <app-navigation />
+    <app-toolbar />
+  </div>
 </template>
 
 <script>
+  import Navigation from './appNavigation.vue'
   import Toolbar from './appToolbar.vue'
   
   export default {
     
     components: {
-      appToolbar: Toolbar
+      appNavigation: Navigation,
+      appToolbar: Toolbar,
     },
     
     data() {
