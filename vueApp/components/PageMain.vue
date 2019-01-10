@@ -2,18 +2,21 @@
   <div>
     <app-navigation />
     <app-toolbar />
+    <app-footer />
   </div>
 </template>
 
 <script>
   import Navigation from './appNavigation.vue'
   import Toolbar from './appToolbar.vue'
+  import Footer from './appFooter.vue'
   
   export default {
     
     components: {
       appNavigation: Navigation,
       appToolbar: Toolbar,
+      appFooter: Footer,
     },
     
     data() {
