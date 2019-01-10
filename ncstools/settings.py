@@ -98,7 +98,7 @@ DATABASES = {
 ROOT_URLCONF = 'ncstools.urls'
 LOGIN_REDIRECT_URL = "/"
 
-# AUTH_USER_MODEL = 'appAccounts.User'
+AUTH_USER_MODEL = 'appAccounts.Account'
 
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ACCOUNT_EMAIL_REQUIRED = False
