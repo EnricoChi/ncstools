@@ -19,6 +19,7 @@ from django.conf.urls import include
 from django.urls import path
 
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from ncstools.views import main
 from appAPIv1.views import *
 
@@ -31,6 +32,8 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('auth/registration/', include('rest_auth.registration.urls')),
+    path('auth/token/obtain/', obtain_jwt_token),
+    path('auth/token/refresh/', refresh_jwt_token),
     path('auth/', include('rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
 ]
