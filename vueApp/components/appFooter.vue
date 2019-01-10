@@ -1,13 +1,12 @@
 <template>
   <v-footer height="40" inset app>
-    <!--<span class="px-3">&copy; {{ new Date().getFullYear() }}</span>-->
-        <v-text-field
-          id="command"
-          box clearable hide-details
-          placeholder="Type your command here:"
-          clear-icon="fa-times"
-          prepend-inner-icon="fa-angle-right"
-          ></v-text-field>
+    <v-text-field
+      id="command"
+      box clearable hide-details
+      placeholder="Type your command here:"
+      clear-icon="fa-times"
+      prepend-inner-icon="fa-angle-right"
+      ></v-text-field>
   </v-footer>
 </template>
 
