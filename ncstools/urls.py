@@ -21,12 +21,15 @@ from django.urls import path
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from ncstools.views import main
-from appAPIv1.views import *
+from appAPIv1 import views
 from appAccounts.views import NCSLoginView
 
+
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'groups', GroupViewSet)
+router.register('users', views.UserViewSet)
+router.register('groups', views.GroupViewSet)
+router.register('projects', views.ProjectViewSet)
+
 
 urlpatterns = [
     path('', main),

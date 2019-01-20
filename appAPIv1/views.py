@@ -1,8 +1,12 @@
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
-from rest_framework import viewsets
 
-from appAPIv1.serializers import UserSerializer, GroupSerializer
+from rest_framework import viewsets
+from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
+
+from appAPIv1.serializers import UserSerializer, GroupSerializer, ProjectSerialazer
+from appAccounts.models import Project
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,3 +24,18 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerialazer
+    http_method_names = ('get', )
+
+    def get_queryset(self):
+        token = self.headers.get('token')
+        if token is None:
+            return
+        data = {'token': token}
+        valid_data = VerifyJSONWebTokenSerializer().validate(data)
+        user = valid_data['user']
+        return Project.objects.filter(user=user)
