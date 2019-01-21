@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialog"
+    v-model="dialog.show"
     fullscreen
     hide-overlay
     transition="dialog-bottom-transition"
@@ -8,7 +8,7 @@
   >
     <v-card tile>
       <v-toolbar card dark color="primary">
-        <v-btn icon dark @click="closeProjectsDialog">
+        <v-btn icon dark @click="toggleDialog(dialog.name)">
           <v-icon>fa-angle-double-left</v-icon>
         </v-btn>
         <v-toolbar-title>Projects</v-toolbar-title>
@@ -45,17 +45,16 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, } from 'vuex';
+  import { mapMutations, } from 'vuex';
   
   export default {
-    computed: {
-      ...mapState({
-        dialog: state => state.dialogProjects
-      }),
+    
+    props: {
+      dialog: Object,
     },
     
     methods: {
-        ...mapMutations([ 'closeProjectsDialog', ]),
+        ...mapMutations([ 'toggleDialog', ]),
     },
     
   }

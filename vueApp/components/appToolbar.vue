@@ -6,29 +6,35 @@
     </v-toolbar-side-icon>
     
     <v-toolbar-items>
-      <v-btn flat @click="openProjectsDialog">PROJECTS</v-btn>
+      <v-btn flat @click="toggleDialog(projects.name)">PROJECTS</v-btn>
       <v-btn flat>FILES</v-btn>
       <v-btn flat>FEATURES</v-btn>
     </v-toolbar-items>
     
-    <dialog-projects />
+    <dialog-projects :dialog="projects" />
 
   </v-toolbar>
 </template>
 
 <script>
-  import { mapMutations, } from 'vuex';
+  import { mapMutations, mapState, } from 'vuex';
   
-  import ProjectsDialog from './appDialogProjects.vue'
+  import DialogProjects from './appDialogProjects.vue'
   
   export default {
     
     components: {
-      dialogProjects: ProjectsDialog,
+      dialogProjects: DialogProjects,
+    },
+    
+    computed: {
+      ...mapState({
+        projects: 'dialogProjects',
+      }),
     },
     
     methods: {
-        ...mapMutations([ 'openProjectsDialog', ]),
+        ...mapMutations([ 'toggleDialog', ]),
     },
   }
 </script>

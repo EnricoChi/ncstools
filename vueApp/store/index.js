@@ -11,8 +11,8 @@ export default new Vuex.Store({
   mutations,
 
   state: {
-    dialogFeatures: false,
-    dialogFiles: false,
-    dialogProjects: false,
+    dialogFeatures: {name: 'features', show: false},
+    dialogFiles: {name: 'files', show: false},
+    dialogProjects: {name: 'projects', show: false},
   },
 })
