@@ -6,19 +6,19 @@ from rest_framework import serializers
 from appAccounts.models import Project
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('url', 'username', 'groups')
+        fields = ('id', 'username', 'groups', )
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = ('url', 'name')
 
 
-class ProjectSerialazer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('__all__')
+        fields = '__all__'

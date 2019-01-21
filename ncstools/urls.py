@@ -27,7 +27,6 @@ from appAccounts.views import NCSLoginView
 
 router = routers.DefaultRouter()
 router.register('users', views.UserViewSet)
-router.register('groups', views.GroupViewSet)
 router.register('projects', views.ProjectViewSet)
 
 

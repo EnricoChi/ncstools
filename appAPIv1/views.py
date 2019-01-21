@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets
 from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
 
-from appAPIv1.serializers import UserSerializer, GroupSerializer, ProjectSerialazer
+from appAPIv1.serializers import UserSerializer, GroupSerializer, ProjectSerializer
 from appAccounts.models import Project
 
 
@@ -28,14 +28,14 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerialazer
-    http_method_names = ('get', )
-
-    def get_queryset(self):
-        token = self.headers.get('token')
-        if token is None:
-            return
-        data = {'token': token}
-        valid_data = VerifyJSONWebTokenSerializer().validate(data)
-        user = valid_data['user']
-        return Project.objects.filter(user=user)
+    serializer_class = ProjectSerializer
+    # http_method_names = ('get', )
+    #
+    # def get_queryset(self):
+    #     token = self.headers.get('token')
+    #     if token is None:
+    #         return
+    #     data = {'token': token}
+    #     valid_data = VerifyJSONWebTokenSerializer().validate(data)
+    #     user = valid_data['user']
+    #     return Project.objects.filter(user=user)
