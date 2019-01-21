@@ -10,5 +10,9 @@ export default new Vuex.Store({
   actions,
   mutations,
 
-  state: {},
+  state: {
+    dialogFeatures: false,
+    dialogFiles: false,
+    dialogProjects: false,
+  },
 })
