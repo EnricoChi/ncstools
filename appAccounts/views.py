@@ -23,10 +23,10 @@ class NCSLoginSerializer(LoginSerializer):
 
         if user:
             if not user.last().is_active:
-                msg = _('User account is disabled.')
+                msg = 'User account is disabled.'
                 raise exceptions.ValidationError(msg)
         else:
-            msg = _('Unable to log in with provided credentials.')
+            msg = 'Unable to log in with provided credentials.'
             raise exceptions.ValidationError(msg)
 
         attrs['user'] = user.last()
