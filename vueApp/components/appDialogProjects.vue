@@ -22,7 +22,7 @@
           <v-btn fab small color="teal accent-3">
             <v-icon>fa-plus</v-icon>
           </v-btn>
-          <v-btn fab small color="deep-orange accent-3">
+          <v-btn fab small color="deep-orange accent-3" @click="fetchProjects">
             <v-icon>fa-refresh</v-icon>
           </v-btn>
         </v-toolbar-items>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import { mapMutations, } from 'vuex';
+  import { mapActions, mapMutations, } from 'vuex';
   
   export default {
     
@@ -69,7 +69,8 @@
     },
     
     methods: {
-        ...mapMutations([ 'toggleDialog', ]),
+      ...mapActions([ 'fetchProjects', ]),
+      ...mapMutations([ 'toggleDialog', ]),
     },
     
   }
@@ -79,6 +80,6 @@
   .fab-container {
     position: fixed;
     top: 30px;
-    left: 40px;
+    left: 50px;
   }
 </style>
