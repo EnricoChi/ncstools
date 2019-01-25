@@ -19,7 +19,7 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="fab-container">
-          <v-btn fab small color="teal accent-3">
+          <v-btn fab small color="teal accent-3" @click="toggleDialog(projectNew)">
             <v-icon>fa-plus</v-icon>
           </v-btn>
           <v-btn fab small color="deep-orange accent-3" @click="fetchProjects">
@@ -60,12 +60,15 @@
 </template>
 
 <script>
-  import { mapActions, mapMutations, } from 'vuex';
+  import { mapActions, mapMutations, mapState } from 'vuex';
   
   export default {
     
-    props: {
-      dialog: Object,
+    computed: {
+      ...mapState({
+        dialog: state => state.dialogs.projects,
+        projectNew: state => state.dialogs.projectNew.name,
+      }),
     },
     
     methods: {

@@ -6,12 +6,12 @@
     </v-toolbar-side-icon>
     
     <v-toolbar-items>
-      <v-btn flat @click="toggleDialog(projects.name)">PROJECTS</v-btn>
+      <v-btn flat @click="toggleDialog(projects)">PROJECTS</v-btn>
       <v-btn flat>FILES</v-btn>
       <v-btn flat>FEATURES</v-btn>
     </v-toolbar-items>
     
-    <dialog-projects :dialog="projects" />
+    <dialog-projects />
 
   </v-toolbar>
 </template>
@@ -29,7 +29,7 @@
     
     computed: {
       ...mapState({
-        projects: 'dialogProjects',
+        projects: state => state.dialogs.projects.name,
       }),
     },
     

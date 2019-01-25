@@ -14,12 +14,14 @@ const state = {
   apiUrl: API,
   apiUrlProjects: `${API}projects/`,
 
-  dialogFeatures: {name: 'features', show: false},
-  dialogFiles: {name: 'files', show: false},
-  dialogProjects: {name: 'projects', show: false},
+  dialogs: {
+    features: {name: 'features', show: false},
+    projects: {name: 'projects', show: false},
+    projectNew: {name: 'projectNew', show: false},
+  },
 
   projects: [],
-  selectedProject: {},
+  selectedProject: null,
 
 };
 

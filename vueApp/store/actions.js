@@ -4,8 +4,8 @@ export const fetchProjects = async ({commit, state}) => {
   if (response.ok) {
     commit('projectsFetched', await response.json());
 
-    // если загружаем впервые - устанавливаем выбранные проект
-    if (!!state.selectedProject && !!state.projects.length) commit('setSelectedProject', state.projects[0]);
+    // если загружаем впервые - устанавливаем выбранный проект
+    if (!state.selectedProject && !!state.projects.length) commit('setSelectedProject', state.projects[0]);
   } else {
     commit('setAlarm', response);
   }

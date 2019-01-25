@@ -10,10 +10,6 @@ export const setAlarm = (state, data) => {
 };
 
 // активируем окно диалога (Projects, Files, Features)
-export const toggleDialog = (state, dialog) => {
-  switch (dialog) {
-    case state.dialogProjects.name:
-      state.dialogProjects.show = !state.dialogProjects.show; break;
-    default: break;
-  }
+export const toggleDialog = (state, dialogName) => {
+  state.dialogs[dialogName].show = !state.dialogs[dialogName].show;
 };
