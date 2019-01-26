@@ -7,9 +7,12 @@
 </template>
 
 <script>
+  import { mapActions, } from 'vuex'
+  
   import Navigation from './appNavigation.vue'
   import Toolbar from './appToolbar.vue'
   import Footer from './appFooter.vue'
+  
   
   export default {
     
@@ -21,6 +24,14 @@
     
     data() {
       return {}
+    },
+    
+    methods: {
+      ...mapActions([ 'fetchProjects', ]),
+    },
+    
+    created() {
+      this.fetchProjects();
     },
     
 //    beforeRouteEnter(to, from, next) {
@@ -36,4 +47,6 @@
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
