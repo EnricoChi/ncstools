@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets
 from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
 
-from appAPIv1.serializers import UserSerializer, GroupSerializer, ProjectSerialazer
+from appAPIv1.serializers import UserSerializer, GroupSerializer, ProjectSerializer
 from appAccounts.models import Project
 
 

@@ -1,40 +1,40 @@
 <template>
   <v-navigation-drawer absolute fixed clipped permanent width="300" app>
+    
     <v-menu full-width offset-x nudge-right="8" transition="slide-x-transition">
       
       <v-btn block flat slot="activator">
-        {{ selectedProject }}
+        {{ selectedProject ? selectedProject.name : ''}}
         <v-spacer></v-spacer>
         <v-icon right>fa-angle-right</v-icon>
       </v-btn>
       
       <v-list>
         <v-list-tile
-          v-for="(project, index) in userProjects"
-          :key="index"
+          v-for="project in projects"
+          :key="project.id"
           @click="setSelectedProject(project)"
-        ><v-list-tile-title>{{ project }}</v-list-tile-title>
+        ><v-list-tile-title>{{ project.name }}</v-list-tile-title>
         </v-list-tile>
       </v-list>
       
     </v-menu>
+  
   </v-navigation-drawer>
 
 </template>
 
 <script>
+  import { mapMutations, mapState, } from 'vuex'
+  
   export default {
-    data: () => ({
-      userProjects: [ 'project1', 'project2', 'project3', ],
-      selectedProject: ''
-    }),
     
-    methods: {
-      setSelectedProject(project) { this.selectedProject = project },
+    computed: {
+      ...mapState([ 'projects', 'selectedProject', ])
     },
     
-    created() {
-      this.setSelectedProject(this.userProjects[0])
+    methods: {
+      ...mapMutations([ 'setSelectedProject', ]),
     },
   }
 </script>
