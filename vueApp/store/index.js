@@ -18,6 +18,8 @@ const state = {
     features: {name: 'features', show: false},
     projects: {name: 'projects', show: false},
     projectNew: {name: 'projectNew', show: false},
+
+    files: {name: 'files', show: true},
   },
 
   projects: [],

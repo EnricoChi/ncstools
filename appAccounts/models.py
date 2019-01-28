@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from django.core import serializers
+from djongo.models.json import JSONField
 
 
 class Account(AbstractUser):
@@ -22,8 +23,8 @@ class Project(models.Model):
         'Project info')
     user = models.ForeignKey(
         'Account', verbose_name='User', on_delete=models.CASCADE)
-    file = models.CharField(
-        'File name', max_length=255, blank=True)
+    files = JSONField(
+        'Files', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Project'
