@@ -28,7 +28,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerialazer
+    serializer_class = ProjectSerializer
 
     def get_queryset(self):
         token = self.headers.get('token')
