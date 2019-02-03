@@ -26,16 +26,15 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
+class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    # http_method_names = ('get', )
-    #
-    # def get_queryset(self):
-    #     token = self.headers.get('token')
-    #     if token is None:
-    #         return
-    #     data = {'token': token}
-    #     valid_data = VerifyJSONWebTokenSerializer().validate(data)
-    #     user = valid_data['user']
-    #     return Project.objects.filter(user=user)
+
+    def get_queryset(self):
+        token = self.headers.get('token')
+        if token is None:
+            return
+        data = {'token': token}
+        valid_data = VerifyJSONWebTokenSerializer().validate(data)
+        user = valid_data['user']
+        return Project.objects.filter(user=user)
