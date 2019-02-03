@@ -19,7 +19,7 @@ const state = {
     projects: {name: 'projects', show: false},
     projectNew: {name: 'projectNew', show: false},
 
-    files: {name: 'files', show: true},
+    files: {name: 'files', show: false},
   },
 
   projects: [],
